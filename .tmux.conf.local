@@ -157,8 +157,31 @@ tmux_conf_theme_right_separator_sub='|'
 #     - #{uptime_s}
 #     - #{username}
 #     - #{username_ssh}
+# %y 两位数的年份表示（00-99）
+# %Y 四位数的年份表示（000-9999）
+# %m 月份（01-12）
+# %d 月内中的一天（0-31）
+# %H 24小时制小时数（0-23）
+# %I 12小时制小时数（01-12） 
+# %M 分钟数（00=59）
+# %S 秒（00-59）
+  
+# %a 本地简化星期名称
+# %A 本地完整星期名称
+# %b 本地简化的月份名称
+# %B 本地完整的月份名称
+# %c 本地相应的日期表示和时间表示
+# %j 年内的一天（001-366）
+# %p 本地A.M.或P.M.的等价符
+# %U 一年中的星期数（00-53）星期天为星期的开始
+# %w 星期（0-6），星期天为星期的开始
+# %W 一年中的星期数（00-53）星期一为星期的开始
+# %x 本地相应的日期表示
+# %X 本地相应的时间表示
+# %Z 当前时区的名称
+# %% %号本身
 tmux_conf_theme_status_left=' ❐ #S | ↑#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} '
-tmux_conf_theme_status_right='#{prefix}#{pairing} #{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} '
+tmux_conf_theme_status_right='#{prefix}#{pairing} #{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %H:%M , %Y-%m-%d %j , %A | #{username}#{root} | #{hostname} '
 
 # status left style
 tmux_conf_theme_status_left_fg='#000000,#e4e4e4,#e4e4e4'  # black, white , white
@@ -191,8 +214,8 @@ tmux_conf_theme_root_attr='bold,blink'
 # battery bar symbols
 tmux_conf_battery_bar_symbol_full='◼'
 tmux_conf_battery_bar_symbol_empty='◻'
-#tmux_conf_battery_bar_symbol_full='♥'
-#tmux_conf_battery_bar_symbol_empty='·'
+tmux_conf_battery_bar_symbol_full='♥'
+tmux_conf_battery_bar_symbol_empty='·'
 
 # battery bar length (in number of symbols), possible values are:
 #   - auto
@@ -218,14 +241,14 @@ tmux_conf_battery_hbar_palette='gradient'
 #   - heat
 #   - 'colour_low,colour_half,colour_full'
 tmux_conf_battery_vbar_palette='gradient'
-#tmux_conf_battery_vbar_palette='#d70000,#ff5f00,#5fff00'  # red, orange, green
+tmux_conf_battery_vbar_palette='#d70000,#ff5f00,#5fff00'  # red, orange, green
 
 # symbols used to indicate whether battery is charging or discharging
 tmux_conf_battery_status_charging='↑'       # U+2191
 tmux_conf_battery_status_discharging='↓'    # U+2193
-#tmux_conf_battery_status_charging='⚡ '    # U+26A1
-#tmux_conf_battery_status_charging='🔌 '    # U+1F50C
-#tmux_conf_battery_status_discharging='🔋 ' # U+1F50B
+tmux_conf_battery_status_charging='⚡ '    # U+26A1
+tmux_conf_battery_status_charging='🔌 '    # U+1F50C
+tmux_conf_battery_status_discharging='🔋 ' # U+1F50B
 
 # clock style
 tmux_conf_theme_clock_colour='#00afff'  # light blue
@@ -246,15 +269,15 @@ tmux_conf_copy_to_os_clipboard=false
 # this is the place to override or undo settings
 
 # increase history size
-#set -g history-limit 10000
+set -g history-limit 10000
 
 # start with mouse mode enabled
-#set -g mouse on
+set -g mouse on
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
-#set -g status-keys vi
-#set -g mode-keys vi
+set -g status-keys vi
+set -g mode-keys vi
 
 # replace C-b by C-a instead of using both prefixes
 # set -gu prefix2
